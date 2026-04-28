@@ -283,3 +283,17 @@ html, body {
   color: white;
   background-color: #4b4b4b;
 }
+
+/**
+ * 隐藏笔记中的 [[笔记抬头模块]] 嵌入内容
+ */
+.vp-doc .markdown-embed[data-src$="笔记抬头模块"],
+.vp-doc .internal-embed[src$="笔记抬头模块"],
+.vp-doc .obsidian-embed[data-embed="笔记抬头模块"] {
+  display: none !important;
+}
+
+/* 如果抬头模块是用代码块形式嵌入的 */
+.vp-doc .meta-bind-embed {
+  display: none !important;
+}
