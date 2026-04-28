@@ -286,14 +286,24 @@ html, body {
 
 /**
  * 隐藏笔记中的 [[笔记抬头模块]] 嵌入内容
+ * 针对 meta-bind-embed 代码块形式
  */
-.vp-doc .markdown-embed[data-src$="笔记抬头模块"],
-.vp-doc .internal-embed[src$="笔记抬头模块"],
-.vp-doc .obsidian-embed[data-embed="笔记抬头模块"] {
+
+/* 隐藏 meta-bind-embed 代码块 */
+.vp-doc div[class*="language-meta-bind"],
+.vp-doc div[class*="meta-bind-embed"],
+.vp-doc .meta-bind-embed {
   display: none !important;
 }
 
-/* 如果抬头模块是用代码块形式嵌入的 */
-.vp-doc .meta-bind-embed {
+/* 隐藏包含 [[笔记抬头模块]] 的代码块 */
+.vp-doc pre:has(code:contains("笔记抬头模块")),
+.vp-doc div:has(> pre code:contains("笔记抬头模块")) {
+  display: none !important;
+}
+
+/* 备选方案：隐藏紧跟在 h2 后面的代码块（通常是抬头模块） */
+.vp-doc h2 + div[class*="language-"],
+.vp-doc h2 + .vp-code-group {
   display: none !important;
 }

@@ -145,6 +145,15 @@ export default defineConfig({
       md.use(MarkdownItMathjax3)
     },
   },
+  async transformPageData(pageData) {
+    // 移除 meta-bind-embed 代码块和 [[笔记抬头模块]]
+    if (pageData.content) {
+      pageData.content = pageData.content.replace(
+        /```meta-bind-embed\s*\n\[\[笔记抬头模块\]\]\s*\n```/g,
+        ''
+      )
+    }
+  },
   async transformHead(context) {
     let head = [...context.head]
 
